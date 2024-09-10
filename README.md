@@ -1,6 +1,9 @@
 # CRUD-Express.js
+
 <br>
-# Tech Stack
+
+## Tech Stack
+
 <p>
 -Node
 </p>
@@ -13,3 +16,5 @@
 <p>
 -MySQL
 </p>
+
+### npm install express morgan body-parser cors nodemon
