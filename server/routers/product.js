@@ -1,16 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const { create, list, read } = require("../controllers/product");
 
-router.get("/product", (req, res) => {
-  res.send("<div>Hello Product Get</div>");
-});
-router.get("/product/:productID", (req, res) => {
-  const { productID } = req.params;
-  res.send("Hello " + productID);
-});
-router.post("/product", (req, res) => {
-  res.send("Hello post");
-});
+router.get("/product", list);
+router.get("/product/:productID", read);
+router.post("/product", create);
 router.put("/product/:productID", (req, res) => {
   const { productID } = req.params;
   res.send("Hello put " + productID);
