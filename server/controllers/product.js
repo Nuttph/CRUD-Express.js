@@ -43,12 +43,14 @@ exports.read = async (req, res) => {
 
 exports.update = async (req, res) => {
   try {
-    const { productId } = req.params;
+    const { productID } = req.params;
     const { name, price } = req.body;
+    // console.log(Number(productI));
+    // console.log(name, price);
 
     const newProduct = await prisma.product.update({
       where: {
-        id: Number(productId),
+        id: Number(productID),
       },
       data: {
         name: name,
@@ -64,8 +66,16 @@ exports.update = async (req, res) => {
 
 exports.remove = async (req, res) => {
   try {
-    res.send("Hello Remove");
+    const { productID } = req.params;
+    const deleteProduct = await prisma.product.delete({
+      where: {
+        id: Number(productID),
+      },
+    });
+    res.send(deleteProduct);
+    // res.send("Hello Remove");
   } catch (err) {
+    res.status(500).json({ message: "Server Error" });
     console.log("Controller Remove ERORR!@#$ " + err);
   }
 };
